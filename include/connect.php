@@ -1,19 +1,18 @@
+2025-02-08 00:55:11.968 [info] > git status -z -uall [114ms]
 <?php
-// Get MySQL database credentials from environment variables
-$dbHost = getenv('DB_HOST');  // Render's database host
-$dbUser = getenv('DB_USER');  // MySQL username from Render
-$dbPass = getenv('DB_PASS');  // MySQL password from Render
-$dbName = getenv('DB_NAME');  // Database name from Render
+$servername = "my-ecommerce-db.onrender.com";  // Replace with your database's hostname
+$username = "my_ecommerce_db_user";             // Your MySQL username
+$password = "KZFoyc3n1deSaVWgWemsY32F8SPfqbWL";             // Your MySQL password
+$dbname = "my_ecommerce_db";                   // Your database name
 
 // Create connection
-$conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected successfully";
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+echo "Connected successfully";
 
 
 /* host name sql105.ezyro.com
